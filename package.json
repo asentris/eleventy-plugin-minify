@@ -1,5 +1,5 @@
 {
-  "name": "@codestitchofficial/eleventy-plugin-minify",
+  "name": "@asentris/eleventy-plugin-minify",
   "version": "1.1.2",
   "description": "An Eleventy plugin to automatically minify files",
   "keywords": [
@@ -19,13 +19,13 @@
     "xml",
     "xsl"
   ],
-  "homepage": "https://github.com/CodeStitchOfficial/eleventy-plugin-minify#readme",
+  "homepage": "https://github.com/asentris/eleventy-plugin-minify#readme",
   "bugs": {
-    "url": "https://github.com/CodeStitchOfficial/eleventy-plugin-minify/issues"
+    "url": "https://github.com/asentris/eleventy-plugin-minify/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CodeStitchOfficial/eleventy-plugin-minify.git"
+    "url": "git+https://github.com/asentris/eleventy-plugin-minify.git"
   },
   "license": "MIT",
   "author": "Ethan Hawes",
