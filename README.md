@@ -80,16 +80,42 @@ Options that are not in this table can be set the same way. `.xsl` files keep a 
 
 ## Publish
 
-Increment the `version` defined in the `package.json` file and run the command below to publish the module in the
-registry:
+This package is distributed directly through GitHub using Git tags. No npm registry publication is required. Updating the version field in `package.json` is optional, but recommended for consistency.
 
-```bash
-# Dry run
-npm publish --dry-run
+### 1. For this repository
 
-# For real (are you really sure?)
-npm publish --access public
-```
+Commit and push your changes to main:
+
+  ```
+  git checkout main
+  git pull origin main
+  git merge dev main
+  git push origin main
+  ```
+
+Create and push a version tag:
+
+  ```
+  git tag --sort=-creatordate | Select-Object -First 2
+  git tag -a v1.0.0 -m "Description."
+  git push --tags
+  ```
+
+### 2. For the using repository
+
+Install a specific version directly from the public GitHub repository:
+
+`npm install github:asentris/eleventy-plugin-minify#v1.0.0`
+
+Alternatively, install the latest commit from main:
+
+`npm install github:asentris/eleventy-plugin-minify#main`
+
+### 3. Updating Releases
+
+For each new release, create and push a new Git tag (e.g., v1.2.1). Existing tags should remain unchanged.
+
+Consuming projects can update by installing the new tag. Commit package-lock.json to ensure reproducible installations.
 
 ## License
 
