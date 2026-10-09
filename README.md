@@ -46,6 +46,38 @@ permalink: /manifest.webmanifest
 ---
 ```
 
+### Options
+
+HTML and XSL files are minified with [html-minifier-terser](https://github.com/terser/html-minifier-terser#options-quick-reference). Any of its options can be passed to `addPlugin`, and they override the defaults below:
+
+```javascript
+const eleventyPluginFilesMinifier = require("@codestitchofficial/eleventy-plugin-minify");
+module.exports = (eleventyConfig) => {
+  eleventyConfig.addPlugin(eleventyPluginFilesMinifier, {
+    decodeEntities: true,
+    removeComments: false,
+  });
+};
+```
+
+| Option | Default | Description |
+| --- | --- | --- |
+| `collapseBooleanAttributes` | `true` | Omit attribute values from boolean attributes |
+| `collapseWhitespace` | `true` | Collapse whitespace that contributes to text nodes |
+| `decodeEntities` | `false` | Decode entities such as `&amp;` into `&` |
+| `html5` | `true` | Parse input according to HTML5 specifications |
+| `minifyCSS` | `true` | Minify CSS in style elements and style attributes |
+| `minifyJS` | `true` | Minify JavaScript in script elements and event attributes |
+| `removeComments` | `true` | Strip HTML comments |
+| `removeEmptyAttributes` | `true` | Remove attributes with whitespace-only values |
+| `removeEmptyElements` | `false` | Remove elements with empty contents |
+| `sortAttributes` | `true` | Sort attributes by frequency |
+| `sortClassName` | `true` | Sort style classes by frequency |
+| `useShortDoctype` | `true` | Replace the doctype with the short HTML5 doctype |
+| `keepClosingSlash` | `true` on `.xsl` files | Keep the trailing slash on void elements |
+
+Options that are not in this table can be set the same way. `.xsl` files keep a closing slash unless `keepClosingSlash` is set.
+
 ## Publish
 
 Increment the `version` defined in the `package.json` file and run the command below to publish the module in the

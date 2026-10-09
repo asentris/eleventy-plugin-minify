@@ -1,7 +1,7 @@
 const htmlmin = require('html-minifier-terser');
 const { pd: prettyData } = require('pretty-data');
 
-module.exports = (value, outputPath) => {
+module.exports = (value, outputPath, options = {}) => {
   // Make sure that there is a file written before trying to minifying it
   if (!outputPath) {
     return value;
@@ -20,7 +20,7 @@ module.exports = (value, outputPath) => {
     const config = {
       collapseBooleanAttributes: true, // Omit attribute values from boolean attributes
       collapseWhitespace: true, // Collapse white space that contributes to text nodes in a document tree
-      decodeEntities: true, // Use direct Unicode characters whenever possible
+      decodeEntities: false, // Use direct Unicode characters whenever possible
       html5: true, // Parse input according to HTML5 specifications
       minifyCSS: true, // Minify CSS in style elements and style attributes (uses clean-css)
       minifyJS: true, // Minify JavaScript in script elements and event attributes (uses UglifyJS)
@@ -30,10 +30,11 @@ module.exports = (value, outputPath) => {
       sortAttributes: true, // Sort attributes by frequency
       sortClassName: true, // Sort style classes by frequency
       useShortDoctype: true, // Replaces the doctype with the short (HTML5) doctype
+      ...options,
     };
 
     if (pathEndBy('.xsl')) {
-      config.keepClosingSlash = true;
+      config.keepClosingSlash = options.keepClosingSlash ?? true;
     }
 
     return htmlmin.minify(value, config);
